@@ -1,0 +1,277 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Consolas", "Monaco", monospace;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  color: #e0e6ed;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+.bg-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.floating-code {
+  position: absolute;
+  color: rgba(64, 224, 208, 0.1);
+  font-size: 14px;
+  animation: float 20s infinite linear;
+  font-family: "Courier New", monospace;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.header {
+  border: 2px solid #40e0d0;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(64, 224, 208, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+.terminal-header {
+  color: #40e0d0;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.name {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(64, 224, 208, 0.5);
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: 1.2rem;
+  color: #40e0d0;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-item {
+  color: #b8c5d1;
+  font-size: 14px;
+}
+
+.contact-item strong {
+  color: #40e0d0;
+}
+
+.contact-item a {
+  color: #b8c5d1;
+  text-decoration: none;
+}
+
+.skills-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.skill-category {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(64, 224, 208, 0.3);
+  border-radius: 10px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.skill-category:hover {
+  border-color: #40e0d0;
+  box-shadow: 0 10px 30px rgba(64, 224, 208, 0.2);
+  transform: translateY(-5px);
+}
+
+.skill-category h3 {
+  color: #40e0d0;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skill-tag {
+  display: inline-block;
+  background: rgba(64, 224, 208, 0.1);
+  color: #40e0d0;
+  padding: 8px 15px;
+  border-radius: 20px;
+  margin: 5px;
+  font-size: 12px;
+  border: 1px solid rgba(64, 224, 208, 0.3);
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(64, 224, 208, 0.2);
+  transform: scale(1.05);
+}
+
+.experience {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(64, 224, 208, 0.3);
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.experience h2 {
+  color: #40e0d0;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.job {
+  border-left: 3px solid #40e0d0;
+  padding-left: 20px;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.job::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  background: #40e0d0;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+}
+
+.job-title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.job-company {
+  color: #40e0d0;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.job-period {
+  color: #888;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.job-description {
+  color: #b8c5d1;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.footer {
+  text-align: center;
+  padding: 30px;
+  color: #666;
+  font-size: 12px;
+  border-top: 1px solid rgba(64, 224, 208, 0.2);
+}
+
+.footer .code-snippet {
+  color: #40e0d0;
+  font-family: "Courier New", monospace;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .name {
+    font-size: 2rem;
+  }
+
+  .skills-section {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+body {
+  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="2" fill="%2340e0d0"/></svg>'),
+    auto;
+}
