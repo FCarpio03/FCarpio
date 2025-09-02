@@ -1,104 +1,714 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Franklin Carpio | Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Fira+Code&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franklin Carpio - Software Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-glass: rgba(255, 255, 255, 0.1);
+            --border: #e2e8f0;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: particle-float 15s linear infinite;
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-image i {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero .tagline {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-item:hover::before {
+            left: 100%;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card h2 {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h2 i {
+            color: var(--primary);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .skill-tag:hover::before {
+            left: 100%;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .job-company {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .job-period {
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .job-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .code-snippet {
+            background: var(--text-primary);
+            color: #00ff41;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            margin-bottom: 2rem;
+            display: inline-block;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-snippet::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,255,65,0.1), transparent);
+            animation: code-glow 2s infinite;
+        }
+
+        @keyframes code-glow {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Background animation -->
-  <div class="bg-animation" id="bgAnimation"></div>
+    <div class="bg-animation"></div>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero loading">
+            <div class="profile-image">
+                <i class="fas fa-code"></i>
+            </div>
+            <h1>FRANKLIN CARPIO</h1>
+            <p class="subtitle">Software Developer & Frontend Specialist</p>
+            <p class="tagline">
+                Passionate about creating elegant solutions through clean code, innovative design, 
+                and seamless user experiences. Always learning, always evolving.
+            </p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong><br>
+                        <a href="mailto:fcarpio031203@gmail.com">fcarpio031203@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <div>
+                        <strong>LinkedIn</strong><br>
+                        <a href="https://www.linkedin.com/in/fcarpio03/" target="_blank">Franklin Carpio</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <div>
+                        <strong>GitHub</strong><br>
+                        <a href="https://github.com/FCarpio03" target="_blank">FCarpio03</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-file-download"></i>
+                    <div>
+                        <strong>Resume</strong><br>
+                        <a href="CV Franklin ENG.pdf" target="_blank">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="container">
-    <!-- Header / Hero Section -->
-    <header class="hero">
-      <div class="terminal-header">user@franklin:~$ whoami</div>
-      <h1 class="name">FRANKLIN CARPIO</h1>
-      <p class="title">Software Developer | Frontend & Database Enthusiast</p>
-      
-      <div class="contact-grid">
-        <a href="mailto:fcarpio031203@gmail.com" target="_blank"><i class="fas fa-envelope"></i> fcarpio031203@gmail.com</a>
-        <a href="https://www.linkedin.com/in/fcarpio03/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/FCarpio03" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a href="CV Franklin ENG.pdf" target="_blank"><i class="fas fa-file"></i> Resume</a>
-      </div>
-    </header>
+        <!-- Skills Section -->
+        <section class="card loading">
+            <h2><i class="fas fa-cogs"></i>Technical Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i>Tech Stack</h3>
+                    <div class="skills-container">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML5/CSS3</span>
+                        <span class="skill-tag">Svelte</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">C/C#</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Git/GitHub</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-lightbulb"></i>Core Competencies</h3>
+                    <div class="skills-container">
+                        <span class="skill-tag">Frontend Development</span>
+                        <span class="skill-tag">Database Design</span>
+                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">Team Leadership</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Skills Section -->
-    <section class="skills-section">
-      <h2>Skills & Expertise</h2>
-      <div class="skills-container">
-        <div class="skill-category">
-          <h3>Tech Stack</h3>
-          <div class="skills-tags">
-            <span>JavaScript</span>
-            <span>HTML/CSS</span>
-            <span>Svelte</span>
-            <span>PHP</span>
-            <span>C / C#</span>
-            <span>SQL</span>
-            <span>Git/GitHub</span>
-          </div>
-        </div>
+        <!-- Experience Section -->
+        <section class="card loading">
+            <h2><i class="fas fa-briefcase"></i>Professional Journey</h2>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">University Internship</div>
+                        <div class="job-company">Grupo Popular</div>
+                    </div>
+                    <div class="job-period">2025</div>
+                </div>
+                <div class="job-description">
+                    Spearheading strategic campaign development and leading innovative marketing initiatives with a strong focus on technical solutions and digital transformation.
+                </div>
+            </div>
 
-        <div class="skill-category">
-          <h3>Core Skills</h3>
-          <div class="skills-tags">
-            <span>Frontend Development</span>
-            <span>Database Design</span>
-            <span>Project Management</span>
-            <span>Team Leadership</span>
-            <span>Problem Solving</span>
-          </div>
-        </div>
-      </div>
-    </section>
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Language Interpreter</div>
+                        <div class="job-company">TransPerfect</div>
+                    </div>
+                    <div class="job-period">2024 - 2025</div>
+                </div>
+                <div class="job-description">
+                    Delivered real-time interpretation services in high-pressure environments, ensuring precise cross-cultural communication and maintaining exceptional accuracy standards.
+                </div>
+            </div>
 
-    <!-- Experience Section -->
-    <section class="experience-section">
-      <h2>$ git log --oneline</h2>
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Language Interpreter</div>
+                        <div class="job-company">LionBridge</div>
+                    </div>
+                    <div class="job-period">2022 - 2023</div>
+                </div>
+                <div class="job-description">
+                    Facilitated seamless English/Spanish communication with exceptional accuracy and cultural sensitivity, supporting diverse client needs across multiple industries.
+                </div>
+            </div>
 
-      <div class="job">
-        <h3>University Internship</h3>
-        <span class="company">Grupo Popular</span>
-        <span class="period">2025</span>
-        <p>Developed strategic campaigns and led marketing initiatives with a focus on technical solutions.</p>
-      </div>
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">English Teacher</div>
+                        <div class="job-company">Dominico Americano</div>
+                    </div>
+                    <div class="job-period">2022 - 2023</div>
+                </div>
+                <div class="job-description">
+                    Developed and executed dynamic, interactive curriculum for grammar, vocabulary, and communication skills. Optimized learning environments and implemented innovative teaching methodologies.
+                </div>
+            </div>
+        </section>
 
-      <div class="job">
-        <h3>Language Interpreter</h3>
-        <span class="company">TransPerfect</span>
-        <span class="period">2024 - 2025</span>
-        <p>Performed real-time interpretation in fast-paced environments, ensuring accurate cross-cultural communication.</p>
-      </div>
+        <!-- Footer -->
+        <footer class="footer loading">
+            <div class="code-snippet">
+                console.log("Ready to build amazing solutions! 🚀");
+            </div>
+            <p>© 2025 Franklin Carpio - Crafting the future, one line of code at a time</p>
+        </footer>
+    </div>
 
-      <div class="job">
-        <h3>Language Interpreter</h3>
-        <span class="company">LionBridge</span>
-        <span class="period">2022 - 2023</span>
-        <p>Facilitated English/Spanish communication with high accuracy and cultural awareness.</p>
-      </div>
+    <script>
+        // Create floating particles
+        function createParticles() {
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                document.body.appendChild(particle);
+            }
+        }
 
-      <div class="job">
-        <h3>English Teacher</h3>
-        <span class="company">Dominico Americano</span>
-        <span class="period">2022 - 2023</span>
-        <p>Trained students in grammar, vocabulary & communication. Designed dynamic, interactive lessons and optimized learning environments.</p>
-      </div>
-    </section>
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.loading');
+            
+            elements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.animationDelay = (index * 0.2) + 's';
+                    element.classList.add('loading');
+                }, index * 200);
+            });
+        }
 
-    <!-- Footer Section -->
-    <footer class="footer">
-      <div class="code-snippet">
-        console.log("Ready to build amazing solutions!");
-      </div>
-      <p>© 2025 Franklin Carpio - Always learning, always coding</p>
-    </footer>
-  </div>
-  
-  <script src="script.js"></script>
+        // Smooth scroll for any internal links
+        function smoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Add hover effect to skill tags
+        function addSkillEffects() {
+            const skillTags = document.querySelectorAll('.skill-tag');
+            
+            skillTags.forEach(tag => {
+                tag.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px) scale(1.05)';
+                });
+                
+                tag.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            animateOnScroll();
+            smoothScroll();
+            addSkillEffects();
+            
+            // Add typing effect to the code snippet
+            const codeElement = document.querySelector('.code-snippet');
+            const originalText = codeElement.textContent;
+            codeElement.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    codeElement.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            // Start typing effect after a delay
+            setTimeout(typeWriter, 2000);
+        });
+
+        // Add parallax effect to background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.bg-animation');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+    </script>
 </body>
 </html>
