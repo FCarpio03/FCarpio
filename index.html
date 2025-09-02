@@ -1,120 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Franklin Carpio</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="bg-animation" id="bgAnimation"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Franklin Carpio | Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <!-- Background animation -->
+  <div class="bg-animation" id="bgAnimation"></div>
 
-    <div class="container">
-      <div class="header">
-        <div class="terminal-header">user@franklin:~$ whoami</div>
-        <h1 class="name">FRANKLIN CARPIO</h1>
-        <p class="title">Software Developer | Frontend & Database Enthusiast</p>
-
-        <div class="contact-grid">
-          <div class="contact-item">
-            <strong>Email:</strong>
-            <a href="mailto:fcarpio031203@gmail.com" target="_blank"
-              >fcarpio031203@gmail.com</a
-            >
-          </div>
-          <div class="contact-item">
-            <strong>LinkedIn:</strong>
-            <a href="https://www.linkedin.com/in/fcarpio03/" target="_blank"
-              >Franklin Carpio</a
-            >
-          </div>
-          <div class="contact-item">
-            <strong>GitHub:</strong>
-            <a href="https://github.com/FCarpio03" target="_blank">FCarpio03</a>
-          </div>
-          <div class="contact-item">
-            <strong>Resume:</strong>
-            <a href="CV Franklin ENG.pdf" target="_blank">Download</a>
-          </div>
-        </div>
+  <div class="container">
+    <!-- Header / Hero Section -->
+    <header class="hero">
+      <div class="terminal-header">user@franklin:~$ whoami</div>
+      <h1 class="name">FRANKLIN CARPIO</h1>
+      <p class="title">Software Developer | Frontend & Database Enthusiast</p>
+      
+      <div class="contact-grid">
+        <a href="mailto:fcarpio031203@gmail.com" target="_blank"><i class="fas fa-envelope"></i> fcarpio031203@gmail.com</a>
+        <a href="https://www.linkedin.com/in/fcarpio03/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/FCarpio03" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="CV Franklin ENG.pdf" target="_blank"><i class="fas fa-file"></i> Resume</a>
       </div>
+    </header>
 
-      <div class="skills-section">
+    <!-- Skills Section -->
+    <section class="skills-section">
+      <h2>Skills & Expertise</h2>
+      <div class="skills-container">
         <div class="skill-category">
           <h3>Tech Stack</h3>
-          <div>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">HTML/CSS</span>
-            <span class="skill-tag">Svelte</span>
-            <span class="skill-tag">PHP</span>
-            <span class="skill-tag">C/C#</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">Git/GitHub</span>
+          <div class="skills-tags">
+            <span>JavaScript</span>
+            <span>HTML/CSS</span>
+            <span>Svelte</span>
+            <span>PHP</span>
+            <span>C / C#</span>
+            <span>SQL</span>
+            <span>Git/GitHub</span>
           </div>
         </div>
 
         <div class="skill-category">
           <h3>Core Skills</h3>
-          <div>
-            <span class="skill-tag">Frontend Development</span>
-            <span class="skill-tag">Database Design</span>
-            <span class="skill-tag">Project Management</span>
-            <span class="skill-tag">Team Leadership</span>
-            <span class="skill-tag">Problem Solving</span>
+          <div class="skills-tags">
+            <span>Frontend Development</span>
+            <span>Database Design</span>
+            <span>Project Management</span>
+            <span>Team Leadership</span>
+            <span>Problem Solving</span>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="experience">
-        <h2>$ git log --oneline</h2>
+    <!-- Experience Section -->
+    <section class="experience-section">
+      <h2>$ git log --oneline</h2>
 
-        <div class="job">
-          <div class="job-title">University Internship</div>
-          <div class="job-company">Grupo Popular</div>
-          <div class="job-period">2025 - 2025</div>
-          <div class="job-description">
-            Developing strategic campaigns and leading marketing initiatives
-            with focus on technical solutions.
-          </div>
-        </div>
-
-        <div class="job">
-          <div class="job-title">Language Interpreter</div>
-          <div class="job-company">TransPerfect</div>
-          <div class="job-period">2024 - 2025</div>
-          <div class="job-description">
-            Real-time interpretation in fast-paced environments, ensuring
-            accurate cross-cultural communication.
-          </div>
-        </div>
-
-        <div class="job">
-          <div class="job-title">Language Interpreter</div>
-          <div class="job-company">LionBridge</div>
-          <div class="job-period">2022 - 2023</div>
-          <div class="job-description">
-            Facilitated English/Spanish communication with high accuracy and
-            cultural awareness.
-          </div>
-        </div>
-        <div class="job">
-          <div class="job-title">English Teacher</div>
-          <div class="job-company">Dominico Americano</div>
-          <div class="job-period">2022 - 2023</div>
-          <div class="job-description">
-            Trained students in grammar, vocabulary & communication. Designed
-            dynamic, interactive lessons and optimized learning environments.
-          </div>
-        </div>
+      <div class="job">
+        <h3>University Internship</h3>
+        <span class="company">Grupo Popular</span>
+        <span class="period">2025</span>
+        <p>Developed strategic campaigns and led marketing initiatives with a focus on technical solutions.</p>
       </div>
 
-      <div class="footer">
-        <div class="code-snippet">
-          console.log("Ready to build amazing solutions!");
-        </div>
-        <p>© 2025 Franklin Carpio - Always learning, always coding</p>
+      <div class="job">
+        <h3>Language Interpreter</h3>
+        <span class="company">TransPerfect</span>
+        <span class="period">2024 - 2025</span>
+        <p>Performed real-time interpretation in fast-paced environments, ensuring accurate cross-cultural communication.</p>
       </div>
-    </div>
-    <script src="script.js"></script>
-  </body>
+
+      <div class="job">
+        <h3>Language Interpreter</h3>
+        <span class="company">LionBridge</span>
+        <span class="period">2022 - 2023</span>
+        <p>Facilitated English/Spanish communication with high accuracy and cultural awareness.</p>
+      </div>
+
+      <div class="job">
+        <h3>English Teacher</h3>
+        <span class="company">Dominico Americano</span>
+        <span class="period">2022 - 2023</span>
+        <p>Trained students in grammar, vocabulary & communication. Designed dynamic, interactive lessons and optimized learning environments.</p>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="code-snippet">
+        console.log("Ready to build amazing solutions!");
+      </div>
+      <p>© 2025 Franklin Carpio - Always learning, always coding</p>
+    </footer>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
 </html>
