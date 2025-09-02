@@ -17,18 +17,21 @@
             --primary-dark: #4f46e5;
             --secondary: #8b5cf6;
             --accent: #06b6d4;
+            --accent-light: #22d3ee;
             --text-primary: #0f172a;
             --text-secondary: #64748b;
             --text-light: #94a3b8;
             --bg-primary: #ffffff;
             --bg-secondary: #f8fafc;
-            --bg-glass: rgba(255, 255, 255, 0.1);
+            --bg-glass: rgba(255, 255, 255, 0.15);
+            --bg-glass-strong: rgba(255, 255, 255, 0.25);
             --border: #e2e8f0;
             --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --contact-bg: rgba(255, 255, 255, 0.95);
         }
 
         body {
@@ -179,24 +182,31 @@
             line-height: 1.8;
         }
 
-        /* Contact Grid */
+        /* Enhanced Contact Grid */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
             margin-top: 3rem;
+            padding: 2rem;
+            background: var(--contact-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .contact-item {
-            background: var(--bg-glass);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            padding: 1.5rem;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .contact-item::before {
@@ -206,8 +216,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: left 0.6s ease;
         }
 
         .contact-item:hover::before {
@@ -215,27 +225,70 @@
         }
 
         .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
         }
 
         .contact-item i {
-            font-size: 2rem;
-            color: var(--accent);
+            font-size: 2.5rem;
+            color: var(--primary);
             margin-bottom: 1rem;
             display: block;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover i {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .contact-item strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .contact-item a {
-            color: white;
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
-        .contact-item a:hover {
-            color: var(--accent);
+        .contact-item:hover a {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .contact-item:hover strong {
+            color: var(--primary);
+        }
+
+        /* Special styling for resume download */
+        .contact-item.resume {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .contact-item.resume strong,
+        .contact-item.resume a {
+            color: white;
+        }
+
+        .contact-item.resume i {
+            color: white;
+        }
+
+        .contact-item.resume:hover {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary) 100%);
+            transform: translateY(-8px) scale(1.05);
         }
 
         /* Cards */
@@ -343,13 +396,16 @@
             padding: 2rem;
             margin: 1.5rem 0;
             border-left: 4px solid var(--primary);
+            border: 2px solid rgba(99, 102, 241, 0.2);
             transition: all 0.3s ease;
             position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .experience-item:hover {
             transform: translateX(5px);
-            box-shadow: var(--shadow);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            border-color: var(--primary);
         }
 
         .job-header {
@@ -430,6 +486,22 @@
             font-size: 0.9rem;
         }
 
+        /* Contact Section Title */
+        .contact-title {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .contact-subtitle {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -446,6 +518,11 @@
 
             .contact-grid {
                 grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+
+            .contact-item {
+                padding: 1.5rem;
             }
 
             .skills-grid {
@@ -475,6 +552,21 @@
                 transform: translateY(0);
             }
         }
+
+        /* Pulse animation for contact items */
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+            }
+        }
+
+        .contact-item:nth-child(1) {
+            animation: pulse 3s infinite;
+            animation-delay: 0.5s;
+        }
     </style>
 </head>
 <body>
@@ -494,31 +586,34 @@
             </p>
             
             <div class="contact-grid">
+                <h3 class="contact-title">Let's Connect</h3>
+                <p class="contact-subtitle">Ready to collaborate? Reach out through any of these channels</p>
+                
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <div>
-                        <strong>Email</strong><br>
+                        <strong>Email</strong>
                         <a href="mailto:fcarpio031203@gmail.com">fcarpio031203@gmail.com</a>
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-linkedin"></i>
                     <div>
-                        <strong>LinkedIn</strong><br>
+                        <strong>LinkedIn</strong>
                         <a href="https://www.linkedin.com/in/fcarpio03/" target="_blank">Franklin Carpio</a>
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-github"></i>
                     <div>
-                        <strong>GitHub</strong><br>
+                        <strong>GitHub</strong>
                         <a href="https://github.com/FCarpio03" target="_blank">FCarpio03</a>
                     </div>
                 </div>
-                <div class="contact-item">
+                <div class="contact-item resume">
                     <i class="fas fa-file-download"></i>
                     <div>
-                        <strong>Resume</strong><br>
+                        <strong>Resume</strong>
                         <a href="CV Franklin ENG.pdf" target="_blank">Download PDF</a>
                     </div>
                 </div>
@@ -568,7 +663,7 @@
                     <div class="job-period">2025</div>
                 </div>
                 <div class="job-description">
-                    Contributed to the design, development, and implementation of web solutions, focusing on responsive design, interactive features, and modern front-end frameworks to enhance user experience and digital presence.
+                    Spearheading strategic campaign development and leading innovative marketing initiatives with a strong focus on technical solutions and digital transformation.
                 </div>
             </div>
 
@@ -584,8 +679,6 @@
                     Delivered real-time interpretation services in high-pressure environments, ensuring precise cross-cultural communication and maintaining exceptional accuracy standards.
                 </div>
             </div>
-
-
 
             <div class="experience-item">
                 <div class="job-header">
